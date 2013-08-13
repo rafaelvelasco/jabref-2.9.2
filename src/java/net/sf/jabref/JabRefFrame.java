@@ -17,6 +17,7 @@ package net.sf.jabref;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -1332,6 +1333,22 @@ public JabRefPreferences prefs() {
       }
       mb.add(search);
 
+      JButton newButton = new JButton(Globals.lang("Set table font"));
+      
+      newButton.addActionListener(new ActionListener() {
+    	  Font font;
+          public void actionPerformed(ActionEvent e) {
+              Font f=new FontSelectorDialog
+                  (null, GUIGlobals.CURRENTFONT).getSelectedFont();
+              if(f==null)
+                  return;
+              else
+                  font = f;
+          }
+          });
+      
+      view.add(newButton);
+      view.addSeparator();
       view.add(back);
       view.add(forward);
       view.add(focusTable);
