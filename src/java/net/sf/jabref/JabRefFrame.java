@@ -1332,23 +1332,39 @@ public JabRefPreferences prefs() {
           sidePaneManager.show(generalFetcher.getTitle());
       }
       mb.add(search);
-
-      JButton newButton = new JButton(Globals.lang("Set table font"));
+   
       
+      JButton newButton = new JButton(Globals.lang("Set table font"));
+ 
       newButton.addActionListener(new ActionListener() {
-    	  Font font;
-          public void actionPerformed(ActionEvent e) {
-              Font f=new FontSelectorDialog
-                  (null, GUIGlobals.CURRENTFONT).getSelectedFont();
+         
+    	  public void actionPerformed(ActionEvent e) {
+              Font f=new FontSelectorDialog(null, GUIGlobals.CURRENTFONT).getSelectedFont();
               if(f==null)
                   return;
               else
-                  font = f;
-          }
+            	  GUIGlobals.CURRENTFONT = f;
+              
+	           
+              	  //Update the font
+	              prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());
+	              prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());
+	              prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());
+              
+	              //Update the new font in the JabRef
+	              if (tabbedPane.getTabCount() > 0){
+	            	  for (int i=0; i<baseCount(); i++) {
+	                      baseAt(i).updateTableFont();
+	                  }
+	              } 
+	              
+    	  	}
           });
+      	
       
-      view.add(newButton);
-      view.addSeparator();
+      view.add(newButton); 	// Add newButton = "Set table font"
+      view.addSeparator();	// Add separator in the view
+      
       view.add(back);
       view.add(forward);
       view.add(focusTable);
