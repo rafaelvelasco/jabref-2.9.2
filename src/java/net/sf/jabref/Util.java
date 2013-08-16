@@ -126,7 +126,8 @@ public class Util {
     public static int MARK_COLOR_LEVELS = 6,
             MAX_MARKING_LEVEL = MARK_COLOR_LEVELS-1,
             IMPORT_MARK_LEVEL = MARK_COLOR_LEVELS;
-    public static Pattern markNumberPattern = Pattern.compile(Globals.prefs.MARKING_WITH_NUMBER_PATTERN);
+//    public static Pattern markNumberPattern = Pattern.compile(Globals.prefs.MARKING_WITH_NUMBER_PATTERN);
+    public static Pattern markNumberPattern = Pattern.compile("");
 
 
     static {
