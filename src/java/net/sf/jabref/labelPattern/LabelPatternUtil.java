@@ -298,6 +298,8 @@ public class LabelPatternUtil {
                  * substitution of editor.
                  */
                 String authString = _entry.getField("author");
+                
+               authString = authString.replaceAll("([a-z])([A-Z])", "$1 $2");// SEPAPAR STRING
 
                 if (val.startsWith("pure")) {
                     // remove the "pure" prefix so the remaining

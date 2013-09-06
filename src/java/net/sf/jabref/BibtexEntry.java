@@ -67,7 +67,6 @@ public class BibtexEntry
         {
             throw new NullPointerException("Every BibtexEntry must have an ID");
         }
-
         _id = id;
         setType(type);
     }

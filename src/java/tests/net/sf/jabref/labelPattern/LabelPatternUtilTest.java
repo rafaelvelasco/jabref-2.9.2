@@ -13,7 +13,18 @@ public class LabelPatternUtilTest extends TestCase {
      * Test the Labelmaker and all kind of accents
      * Á á Ć ć É é Í í Ĺ ĺ Ń ń Ó ó Ŕ ŕ Ś ś Ú ú Ý ý Ź ź  
      */
+	
+	public void testFinalNameAuthor(){
+		BibtexEntry entry0 = BibtexParser.singleFromString("@ARTICLE{kohn, author={Andreas deSouza}, year={2000}}");
+    	assertEquals("Souza",net.sf.jabref.Util.checkLegalKey(LabelPatternUtil.makeLabel(entry0, "auth"))); // Caso que é aceito
+    	
+    	entry0 = BibtexParser.singleFromString("@ARTICLE{kohn, author={Rafael diasMuller}, year={2000}}");
+    	assertEquals("diasMuller",net.sf.jabref.Util.checkLegalKey(LabelPatternUtil.makeLabel(entry0, "auth"))); // Caso que gera um defeito
+	}
+	
+	
     public void testMakeLabelAndCheckLegalKeys() {
+    	
     	BibtexEntry entry0 = BibtexParser.singleFromString("@ARTICLE{kohn, author={Andreas Köning}, year={2000}}");
     	assertEquals("Koen", net.sf.jabref.Util.checkLegalKey(LabelPatternUtil.makeLabel(entry0, "auth3")));
     	

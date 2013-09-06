@@ -140,6 +140,7 @@ public class NameFormat implements LayoutFormatter {
 			
 			if (formatString.length < 3){
 				// Error
+				System.out.println(toFormat);
 				return toFormat;
 			}
 			
@@ -151,6 +152,7 @@ public class NameFormat implements LayoutFormatter {
 				}
 			}
 		}
+		System.out.println(toFormat);
 		return toFormat;
 	}
 

@@ -51,7 +51,7 @@ public class GetOpenOfficeType implements LayoutFormatter
 {
     //~ Methods ////////////////////////////////////////////////////////////////
 
-    public String format(String fieldText)
+	public String format(String fieldText)
     {
         String fieldEntry = fieldText;
 		if (fieldEntry.equalsIgnoreCase("Article")) return "7";
