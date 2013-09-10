@@ -360,6 +360,7 @@ public class SearchManager2 extends SidePaneComponent
 	 * @return
 	 */
 	private ArrayList<String> getSearchwords(String t) {
+		
 		// for now ... just seperate words by whitespace
 		String[] strings = t.split(" ");
 		ArrayList<String> words = new ArrayList<String>(strings.length);
@@ -473,9 +474,33 @@ public class SearchManager2 extends SidePaneComponent
             SwingUtilities.invokeLater(t);
         }
     }
+    
+    public String removeAcentos (String field){  
+        field = field.replaceAll("[ÂÀÁÄÃ]","A");  
+        field = field.replaceAll("[âãàáä]","a");  
+        field = field.replaceAll("[ÊÈÉË]","E");  
+        field = field.replaceAll("[êèéë]","e");  
+        field = field.replaceAll("ÎÍÌÏ","I");  
+        field = field.replaceAll("îíìï","i");  
+        field = field.replaceAll("[ÔÕÒÓÖ]","O");  
+        field = field.replaceAll("[ôõòóö]","o");  
+        field = field.replaceAll("[ÛÙÚÜ]","U");  
+        field = field.replaceAll("[ûúùü]","u");  
+        field = field.replaceAll("Ç","C");  
+        field = field.replaceAll("ç","c");   
+        field = field.replaceAll("[ýÿ]","y");  
+        field = field.replaceAll("Ý","Y");  
+        field = field.replaceAll("ñ","n");  
+        field = field.replaceAll("Ñ","N");    
+        return field;  
+    }  
 
     public void actionPerformed(ActionEvent e) {
 
+    	//JOptionPane.showInputDialog("teste de Ação - linha 487");	// Teste para identifar qual método é chamado quando se clica no botão "Search All Fields"
+    
+    	searchField.setText(removeAcentos(searchField.getText())); // Aplicacao do metodo que remove os acentos da palavra escolhida.
+    	
     if (e.getSource() == escape) {
         incSearch = false;
         clearSearchLater();
